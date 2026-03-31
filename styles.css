@@ -114,12 +114,13 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
 .about-lead { font-size: 1.05rem; color: var(--gray-700); margin: 20px 0 12px; line-height: 1.7; }
 .about-content > p { color: var(--gray-600); margin-bottom: 10px; line-height: 1.7; font-size: 0.95rem; }
-.about-highlights { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
-.about-highlight-item { display: flex; align-items: center; gap: 14px; }
-.highlight-icon { width: 32px; height: 32px; flex-shrink: 0; color: var(--blue-600); }
+.about-highlights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.about-highlight-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 16px; text-align: center; transition: all 0.2s ease; }
+.about-highlight-card:hover { border-color: var(--blue-200, #bfdbfe); box-shadow: var(--shadow-sm); }
+.about-highlight-card .highlight-icon { width: 28px; height: 28px; color: var(--blue-600); margin: 0 auto 8px; }
 .highlight-icon svg { width: 100%; height: 100%; }
-.about-highlight-item strong { display: block; font-size: 0.9rem; color: var(--gray-900); }
-.about-highlight-item span { font-size: 0.8rem; color: var(--gray-500); }
+.about-highlight-card strong { display: block; font-size: 0.85rem; color: var(--gray-900); margin-bottom: 2px; }
+.about-highlight-card span { font-size: 0.75rem; color: var(--gray-500); }
 .about-visual { display: flex; flex-direction: column; gap: 20px; }
 .about-card { background: var(--white); padding: 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); }
 .about-card-icon { width: 40px; height: 40px; color: var(--blue-600); margin-bottom: 12px; }
@@ -197,8 +198,7 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 .consultancy-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 .consultancy-icon { width: 40px; height: 40px; color: var(--blue-400); margin-bottom: 12px; }
 .consultancy-icon svg { width: 100%; height: 100%; }
-.consultancy-icon-img { width: 56px; height: 56px; border-radius: var(--radius-sm); overflow: hidden; }
-.consultancy-icon-img img { width: 100%; height: 100%; object-fit: contain; }
+.gem-logo { width: 64px; height: 64px; object-fit: contain; background: var(--white); border-radius: var(--radius-md); padding: 6px; margin-bottom: 12px; }
 .consultancy-card h3 { color: var(--white); margin-bottom: 6px; font-size: 1.05rem; }
 .consultancy-card > p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; }
 .consult-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -300,6 +300,7 @@ h4 { font-size: 1.05rem; font-weight: 600; }
   .stat-divider { width: 40px; height: 1px; }
   .hero-cta { flex-direction: column; }
   .about-visual { flex-direction: column; }
+  .about-highlights-grid { grid-template-columns: 1fr 1fr; }
   .cert-strip-inner { gap: 10px; }
   .cert-chip { padding: 6px 14px 6px 6px; }
   .why-strip-label { position: static; padding: 12px 24px; display: block; text-align: center; }

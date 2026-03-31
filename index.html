@@ -104,42 +104,34 @@
           <p class="about-lead">Founded in 2019, Om Minerals & Metals is a Government-registered MSME partnership firm headquartered in Ghaziabad, Uttar Pradesh, with a manufacturing facility in Bulandshahar. We are a leading manufacturer and supplier of foundry minerals, ferro alloys, refractories, and industrial metals to India's most demanding sectors.</p>
           <p>Our commitment to quality and innovation has positioned us as a trusted partner in the defence manufacturing sector. We are a certified vendor to the Ordnance Factory Board and hold NCAGE and Raksha Udymi credentials from the Ministry of Defence.</p>
           <p>We are also an authorized dealer for <strong>Force Speciality Chem Pvt. Ltd., Haridwar</strong> (formerly Forece Polymers Pvt. Ltd.), extending our reach into specialty chemical products for foundry and industrial applications.</p>
-          <div class="about-highlights">
-            <div class="about-highlight-item">
+          <div class="about-highlights-grid">
+            <div class="about-highlight-card">
               <div class="highlight-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
               </div>
-              <div>
-                <strong>MSME Registered</strong>
-                <span>UAM UP29D0022497</span>
-              </div>
+              <strong>MSME Registered</strong>
+              <span>UAM UP29D0022497</span>
             </div>
-            <div class="about-highlight-item">
+            <div class="about-highlight-card">
               <div class="highlight-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
               </div>
-              <div>
-                <strong>GST Registered</strong>
-                <span>09AAGFO2914B1ZL</span>
-              </div>
+              <strong>GST Registered</strong>
+              <span>09AAGFO2914B1ZL</span>
             </div>
-            <div class="about-highlight-item">
+            <div class="about-highlight-card">
               <div class="highlight-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
               </div>
-              <div>
-                <strong>Authorized Dealer</strong>
-                <span>Force Speciality Chem Pvt. Ltd., Haridwar</span>
-              </div>
+              <strong>Authorized Dealer</strong>
+              <span>Force Speciality Chem Pvt. Ltd.</span>
             </div>
-            <div class="about-highlight-item">
+            <div class="about-highlight-card">
               <div class="highlight-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
               </div>
-              <div>
-                <strong>Manufacturing Facility</strong>
-                <span>Skandrabad Industrial Area, Bulandshahar, U.P.</span>
-              </div>
+              <strong>Manufacturing Facility</strong>
+              <span>Bulandshahar, U.P.</span>
             </div>
           </div>
         </div>
@@ -394,7 +386,7 @@
         </div>
         <div class="consultancy-grid">
           <div class="consultancy-card">
-            <div class="consultancy-icon consultancy-icon-img"><img src="assets/gem-logo.jpeg" alt="GeM - Government e Marketplace"></div>
+            <img src="assets/gem-logo.jpeg" alt="GeM - Government e Marketplace" class="gem-logo">
             <h3>GeM (Govt. e-Marketplace)</h3>
             <p>Seller registration, catalogue creation, product listing, bid participation, and order fulfilment on India's official procurement portal.</p>
             <div class="consult-tags"><span>Seller registration</span><span>Catalogue setup</span><span>Bid & RA guidance</span></div>
@@ -686,6 +678,27 @@
       );
       window.location.href = 'mailto:omminerals@yahoo.com?subject=' + subject + '&body=' + body;
     });
+
+    // Auto-scroll product gallery
+    const galleryScroll = document.querySelector('.gallery-scroll');
+    if (galleryScroll) {
+      let scrollSpeed = 1;
+      let scrollPaused = false;
+      galleryScroll.addEventListener('mouseenter', () => { scrollPaused = true; });
+      galleryScroll.addEventListener('mouseleave', () => { scrollPaused = false; });
+      galleryScroll.addEventListener('touchstart', () => { scrollPaused = true; });
+      galleryScroll.addEventListener('touchend', () => { setTimeout(() => { scrollPaused = false; }, 2000); });
+      function autoScrollGallery() {
+        if (!scrollPaused) {
+          galleryScroll.scrollLeft += scrollSpeed;
+          if (galleryScroll.scrollLeft >= galleryScroll.scrollWidth - galleryScroll.clientWidth) {
+            galleryScroll.scrollLeft = 0;
+          }
+        }
+        requestAnimationFrame(autoScrollGallery);
+      }
+      autoScrollGallery();
+    }
 
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
