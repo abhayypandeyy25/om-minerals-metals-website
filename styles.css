@@ -72,8 +72,8 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 .navbar.scrolled { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); box-shadow: var(--shadow-md); padding: 10px 0; }
 .nav-container { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 12px; }
-.nav-logo img { width: 44px; height: 44px; }
-.nav-logo span { font-weight: 700; font-size: 0.95rem; line-height: 1.2; color: var(--white); transition: color 0.3s; }
+.nav-logo img { width: 52px; height: 52px; }
+.nav-logo span { font-weight: 700; font-size: 1.2rem; line-height: 1.2; color: var(--white); transition: color 0.3s; white-space: nowrap; }
 .navbar.scrolled .nav-logo span { color: var(--navy); }
 .nav-menu { display: flex; align-items: center; gap: 28px; }
 .nav-menu a { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); transition: color 0.2s; }
