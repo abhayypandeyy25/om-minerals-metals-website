@@ -73,8 +73,9 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 .nav-container { display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 12px; }
 .nav-logo img { width: 52px; height: 52px; }
-.nav-logo span { font-weight: 700; font-size: 1.2rem; line-height: 1.2; color: var(--white); transition: color 0.3s; white-space: nowrap; }
-.navbar.scrolled .nav-logo span { color: var(--navy); }
+.nav-logo span { font-weight: 900; font-size: 1.3rem; line-height: 1.2; color: var(--white); transition: all 0.3s; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.navbar.scrolled .nav-logo span { background: linear-gradient(180deg, #0a2e6b 0%, #1a7fd4 50%, #22b8cf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; }
+/* scrolled logo color handled in nav-logo span above */
 .nav-menu { display: flex; align-items: center; gap: 28px; }
 .nav-menu a { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); transition: color 0.2s; }
 .nav-menu a:hover { color: var(--white); }
