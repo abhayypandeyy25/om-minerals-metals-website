@@ -156,11 +156,11 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 /* ===== PRODUCT GALLERY — HORIZONTAL CAROUSEL ===== */
 .product-gallery { margin-top: 48px; }
 .gallery-title { text-align: center; font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
-.gallery-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--blue-200, #bfdbfe) transparent; }
+.gallery-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--blue-200, #bfdbfe) transparent; }
 .gallery-scroll::-webkit-scrollbar { height: 6px; }
 .gallery-scroll::-webkit-scrollbar-track { background: var(--gray-100); border-radius: 3px; }
 .gallery-scroll::-webkit-scrollbar-thumb { background: var(--blue-300, #93c5fd); border-radius: 3px; }
-.gallery-item { flex: 0 0 160px; scroll-snap-align: start; position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1; background: var(--gray-100); border: 1px solid var(--gray-200); transition: transform 0.3s ease; }
+.gallery-item { flex: 0 0 160px; position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1; background: var(--gray-100); border: 1px solid var(--gray-200); transition: transform 0.3s ease; }
 .gallery-item:hover { transform: scale(1.05); }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gallery-item span { position: absolute; bottom: 0; left: 0; right: 0; padding: 6px 10px; background: linear-gradient(to top, rgba(10, 22, 40, 0.85), transparent); color: var(--white); font-size: 0.72rem; font-weight: 600; text-align: center; }
@@ -198,7 +198,7 @@ h4 { font-size: 1.05rem; font-weight: 600; }
 .consultancy-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 .consultancy-icon { width: 40px; height: 40px; color: var(--blue-400); margin-bottom: 12px; }
 .consultancy-icon svg { width: 100%; height: 100%; }
-.gem-logo { width: 64px; height: 64px; object-fit: contain; background: var(--white); border-radius: var(--radius-md); padding: 6px; margin-bottom: 12px; }
+.gem-logo { width: 100%; height: 100%; object-fit: contain; background: var(--white); border-radius: var(--radius-sm); padding: 4px; }
 .consultancy-card h3 { color: var(--white); margin-bottom: 6px; font-size: 1.05rem; }
 .consultancy-card > p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; }
 .consult-tags { display: flex; flex-wrap: wrap; gap: 6px; }

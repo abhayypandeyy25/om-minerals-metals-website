@@ -385,15 +385,15 @@
         </div>
         <div class="consultancy-grid">
           <div class="consultancy-card">
-            <img src="assets/gem-logo.jpeg" alt="GeM - Government e Marketplace" class="gem-logo">
+            <div class="consultancy-icon"><img src="assets/gem-logo.jpeg" alt="GeM" class="gem-logo"></div>
             <h3>GeM (Govt. e-Marketplace)</h3>
             <p>Seller registration, catalogue creation, product listing, bid participation, and order fulfilment on India's official procurement portal.</p>
             <div class="consult-tags"><span>Seller registration</span><span>Catalogue setup</span><span>Bid & RA guidance</span></div>
           </div>
           <div class="consultancy-card">
             <div class="consultancy-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4l-4 12h-12l10 7-4 12 10-7 10 7-4-12 10-7H28z"/><rect x="14" y="36" width="20" height="6" rx="1"/></svg></div>
-            <h3>Defence & Ordnance</h3>
-            <p>Vendor registration with Ordnance Factories, NCAGE certification, Raksha Udymi Number (RUN), and item establishment for defence contracts.</p>
+            <h3>Defence</h3>
+            <p>Vendor registration with Defence establishments, NCAGE certification, Raksha Udymi Number (RUN), and item establishment for defence contracts.</p>
             <div class="consult-tags"><span>OFB / DPSUs registration</span><span>NCAGE & RUN</span><span>Item establishment</span></div>
           </div>
           <div class="consultancy-card">
@@ -627,25 +627,23 @@
     });
 
     // Auto-scroll product gallery
-    const galleryScroll = document.querySelector('.gallery-scroll');
-    if (galleryScroll) {
-      let scrollSpeed = 1;
-      let scrollPaused = false;
-      galleryScroll.addEventListener('mouseenter', () => { scrollPaused = true; });
-      galleryScroll.addEventListener('mouseleave', () => { scrollPaused = false; });
-      galleryScroll.addEventListener('touchstart', () => { scrollPaused = true; });
-      galleryScroll.addEventListener('touchend', () => { setTimeout(() => { scrollPaused = false; }, 2000); });
-      function autoScrollGallery() {
-        if (!scrollPaused) {
-          galleryScroll.scrollLeft += scrollSpeed;
-          if (galleryScroll.scrollLeft >= galleryScroll.scrollWidth - galleryScroll.clientWidth) {
-            galleryScroll.scrollLeft = 0;
-          }
+    (function() {
+      const g = document.querySelector('.gallery-scroll');
+      if (!g) return;
+      let paused = false;
+      g.addEventListener('mouseenter', function() { paused = true; });
+      g.addEventListener('mouseleave', function() { paused = false; });
+      g.addEventListener('touchstart', function() { paused = true; }, {passive: true});
+      g.addEventListener('touchend', function() { setTimeout(function() { paused = false; }, 3000); });
+      setInterval(function() {
+        if (paused) return;
+        if (g.scrollLeft >= g.scrollWidth - g.clientWidth - 2) {
+          g.scrollLeft = 0;
+        } else {
+          g.scrollLeft += 1;
         }
-        requestAnimationFrame(autoScrollGallery);
-      }
-      autoScrollGallery();
-    }
+      }, 20);
+    })();
 
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
