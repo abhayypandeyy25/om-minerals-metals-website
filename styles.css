@@ -163,8 +163,6 @@ p  { margin: 0 0 1em; color: var(--text); }
 .hero h1 { color: #fff; }
 .hero h1 em {
   font-style: normal; color: var(--steel-soft);
-  border-bottom: 2px solid rgba(184,115,51,.4);
-  padding-bottom: 4px;
 }
 .hero p {
   color: #c5cdda; font-size: 1.05rem; max-width: 640px; margin-bottom: 32px;
