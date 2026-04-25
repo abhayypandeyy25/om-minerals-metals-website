@@ -114,7 +114,8 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements: quantities, specifications, timelines..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Send Enquiry</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn">Send Enquiry</button>
+          <div id="formStatus" style="margin-top: 14px; font-size: 14px; display: none;"></div>
         </form>
       </div>
     </div>
@@ -136,18 +137,55 @@
   </footer>
 
   <script>
+    // Paste your Google Apps Script Web App URL here once deployed
+    const SHEET_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
     const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
     if(t)t.addEventListener('click',()=>l.classList.toggle('open'));
 
-    document.getElementById('contactForm').addEventListener('submit', function(e){
+    const form   = document.getElementById('contactForm');
+    const btn    = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+
+    function setStatus(msg, color){
+      status.style.display = 'block';
+      status.style.color = color;
+      status.textContent = msg;
+    }
+
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
-      const f = id => document.getElementById(id).value;
-      const subject = encodeURIComponent('Enquiry from ' + f('name') + (f('company') ? '. ' + f('company') : ''));
-      const body = encodeURIComponent(
-        'Name: ' + f('name') + '\nCompany: ' + f('company') + '\nEmail: ' + f('email') +
-        '\nPhone: ' + f('phone') + '\nInterested In: ' + f('interest') + '\n\nMessage:\n' + f('message')
-      );
-      window.location.href = 'mailto:omminerals@yahoo.com?subject=' + subject + '&body=' + body;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      setStatus('', 'inherit');
+      status.style.display = 'none';
+
+      const data = new FormData(form);
+      data.append('page', location.pathname);
+
+      // Fallback to mailto if endpoint not configured yet
+      if (SHEET_ENDPOINT.startsWith('PASTE_')) {
+        const f = id => document.getElementById(id).value;
+        const subject = encodeURIComponent('Enquiry from ' + f('name') + (f('company') ? ' — ' + f('company') : ''));
+        const body = encodeURIComponent(
+          'Name: ' + f('name') + '\nCompany: ' + f('company') + '\nEmail: ' + f('email') +
+          '\nPhone: ' + f('phone') + '\nInterested In: ' + f('interest') + '\n\nMessage:\n' + f('message')
+        );
+        window.location.href = 'mailto:omminerals@yahoo.com?subject=' + subject + '&body=' + body;
+        btn.disabled = false; btn.textContent = 'Send Enquiry';
+        return;
+      }
+
+      try {
+        await fetch(SHEET_ENDPOINT, { method: 'POST', body: data, mode: 'no-cors' });
+        form.reset();
+        setStatus('Thank you. Your enquiry has been received. Our team will respond within 24 hours.', '#1a7f3c');
+        btn.textContent = 'Sent';
+      } catch (err) {
+        setStatus('Sorry, something went wrong. Please email us directly at omminerals@yahoo.com.', '#b00020');
+        btn.disabled = false;
+        btn.textContent = 'Try Again';
+      }
     });
   </script>
 </body>
